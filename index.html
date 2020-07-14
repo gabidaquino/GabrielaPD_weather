@@ -2,11 +2,11 @@
 <html>
 
 <head>
-  <title>GPD PROJECT</title>
+  <title>Weather app gabidaquino</title>
   <meta charset="UTF-8" />
-  <link href="src/styles.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+  <link rel="stylesheet" href="src/style.css" />
   <script src="https://kit.fontawesome.com/e113ab94c6.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <style>
@@ -17,9 +17,11 @@
 </head>
 
 <body>
-  <div class="container card-body p-4 border border-info rounded">
+  <div class="container">
+    <div class="weather-app text-info">
     <form id="city-form" class="form border-0">
       <div class="row">
+        
         <div class="col-6">
           <input type="search" placeholder="Enter a city name here" autofocus="on" class="form-control mb-2 w-100"
             id="input-city" />
@@ -36,39 +38,31 @@
       </div>
     </form>
 
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="row ">
-          <div class="col">
-            <h3 class="text-info" id="city-display"></h3>
-          </div>
-          <div class="col-sm-12">
-            <h6 class="text-uppercase text-info" id="country-display"></h6>
-          </div>
+    <div class="row upper-app card-body border">
+      <div class="col">
+        <div class="row border">
+            <span class="text-info h3" id="city-display"></span>
+            <span class="text-info h3">,</span> 
+            <span class="text-uppercase text-info h3" id="country-display"></span>
         </div>
-        <div class="row ">
-          <div class="col">
-            <h1 class="text-info">
-              <span class="temperature" id="temperature"></span>
-              <span class="units">
+        <div class="row border">
+            <span class="text-info h6" id="date-line"></span>
+          
+        </div>
+        <div class="row border">
+          <div class="col border">
+              <div class="h3 units">
+                <span class="text-info temperature display-3" id="temperature"></span>
                 <a href="#" id="celsius-link">ºC</a> |
-                <a href="#" id="fahrenheit-link">F</a></span>
-            </h1>
+                <a href="#" id="fahrenheit-link">F</a>
+              </div>
           </div>
-          <div class="col">
-            <div class="row justify-content-center">
-              <p id="min" class="text-info"></p>
-            </div>
-            <div class="row justify-content-center">
-              <p id="max" class="text-info"></p>
-            </div>
+          <div class="col border">
+              <div id="min" class="text-info h6"></div>
+              <div id="max" class="text-info h6"></div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-12">
-            <h6 class="text-info" id="date-line"></h6>
-          </div>
-        </div>
+        
       </div>
       <div class="col-sm-4 card-body ">
         <div class="row align-items-center">
@@ -84,8 +78,8 @@
       </div>
     </div>
 
-    <div class="row text-info border align-items-center p-2">
-      <div class="col-sm-2.4 card-body border border-info rounded p-4 m-1">
+    <div class="row lower-app card-body border">
+      <div class="border border-info rounded p-3 m-1">
         <p>
           Mon
         </p>
@@ -96,7 +90,7 @@
           12ºC/27ºC
         </p>
       </div>
-      <div class="col-sm-2.4 card-body border border-info rounded p-4 m-1">
+      <div class="border border-info rounded p-3 m-1">
         <p>
           Tue
         </p>
@@ -107,7 +101,7 @@
           12ºC/27ºC
         </p>
       </div>
-      <div class="col-sm-2.4 card-body border border-info rounded p-4 m-1">
+      <div class=" border border-info rounded p-3 m-1">
         <p>
           Wed
         </p>
@@ -118,7 +112,7 @@
           12ºC/27ºC
         </p>
       </div>
-      <div class="col-sm-2.4 card-body border border-info rounded p-4 m-1">
+      <div class=" border border-info rounded p-3 m-1">
         <p>
           Thu
         </p>
@@ -129,7 +123,7 @@
           12ºC/27ºC
         </p>
       </div>
-      <div class="col-sm-2.4 card-body  border border-info rounded p-4 m-1">
+      <div class=" border border-info rounded p-3 m-1">
         <p>
           Fri
         </p>
@@ -141,11 +135,12 @@
         </p>
       </div>
       <small>
-        This app was coded by <a href="https://github.com/gabidaquino"> Gabi D'Aquino </a> and is <a href="https://github.com/gabidaquino/GabrielaPD_weather" > open-sourced on GitHub </a> and <a href="https://www.netlify.com/"> hosted on Netlify </a> .
+        This app was coded by <a href="https://github.com/gabidaquino" target="_blank"> Gabi D'Aquino </a> and is <a href="https://github.com/gabidaquino/GabrielaPD_weather" target="_blank" > open-sourced on GitHub </a> and <a href="https://www.netlify.com/" target="_blank"> hosted on Netlify </a> .
       </small>
+      
     </div>
-
-    <script src="src/script.js"></script>
+  </div>
+<script src="src/script.js"></script>
 </body>
 
 </html>
