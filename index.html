@@ -1,146 +1,197 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Weather app gabidaquino</title>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+    <script
+      src="https://kit.fontawesome.com/e113ab94c6.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+      body {
+        margin: 30px;
+      }
+    </style>
+  </head>
 
-<head>
-  <title>Weather app gabidaquino</title>
-  <meta charset="UTF-8" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
-  <link rel="stylesheet" href="src/style.css" />
-  <script src="https://kit.fontawesome.com/e113ab94c6.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <style>
-    body {
-      margin: 30px;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="container">
-    <div class="weather-app text-info">
-    <form id="city-form" class="form border-0">
-      <div class="row">
-        
-        <div class="col-6">
-          <input type="search" placeholder="Enter a city name here" autofocus="on" class="form-control mb-2 w-100"
-            id="input-city" />
-        </div>
-
-        <div class="col-3">
-          <input type="submit" value="submit" class="btn border-0 bg-info btn-primary shadow-sm w-100"
-            id="search-city" />
-        </div>
-
-        <div class="col-3">
-          <input type="submit" value="current" class="btn btn-primary shadow-sm w-100" id="current-city" />
-        </div>
-      </div>
-    </form>
-
-    <div class="row upper-app card-body border">
-      <div class="col">
-        <div class="row border">
-            <span class="text-info h3" id="city-display"></span>
-            <span class="text-info h3">,</span> 
-            <span class="text-uppercase text-info h3" id="country-display"></span>
-        </div>
-        <div class="row border">
-            <span class="text-info h6" id="date-line"></span>
-          
-        </div>
-        <div class="row border">
-          <div class="col border">
-              <div class="h3 units">
-                <span class="text-info temperature display-3" id="temperature"></span>
-                <a href="#" id="celsius-link">ºC</a> |
-                <a href="#" id="fahrenheit-link">F</a>
+  <body>
+    <div class="container">
+      <div class="weather-app-wrapper">
+        <div class="weather-app text-info">
+          <form id="city-form" class="form border-0">
+            <div class="row">
+              <div class="col-6">
+                <input
+                  type="search"
+                  placeholder="Enter a city name here"
+                  autofocus="on"
+                  class="form-control mb-2 w-100"
+                  id="input-city"
+                />
               </div>
+
+              <div class="col-3">
+                <input
+                  type="submit"
+                  value="submit"
+                  class="btn border-0 bg-info btn-primary shadow-sm w-100"
+                  id="search-city"
+                />
+              </div>
+
+              <div class="col-3">
+                <input
+                  type="submit"
+                  value="current"
+                  class="btn btn-primary shadow-sm w-100"
+                  id="current-city"
+                />
+              </div>
+            </div>
+          </form>
+
+          <div class="row card-body" id="upper-app-wrapper">
+            <div class="col-8" id="coluna-esquerda-wrapper">
+              <div class="row" id="linha-da-cidade">
+                <span class="text-info h3" id="city-display"></span>
+                <span class="text-info h3">,</span>
+                <span
+                  class="text-uppercase text-info h3"
+                  id="country-display"
+                ></span>
+              </div>
+
+              <div class="row" id="linha-da-data">
+                <span class="text-info h6" id="date-line"></span>
+              </div>
+
+              <div class="row" id="linha-das-temperaturas">
+                <div class="col-6" id="coluna-temperatura-atual">
+                  <div class="h5 units" id="tracinho">
+                    <span
+                      class="text-info temperature display-3"
+                      id="temperature"
+                    ></span>
+                    <a href="#" id="celsius-link">ºC</a> |
+                    <a href="#" id="fahrenheit-link">F</a>
+                  </div>
+                </div>
+                <div class="col-6 card-body" id="coluna-minima-maxima">
+                  <div id="min" class="text-info h6"></div>
+                  <div id="max" class="text-info h6"></div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="col-sm-4 border border-info card-body"
+              id="coluna-direita-wrapper"
+            >
+              <div class="row">
+                <p
+                  id="description"
+                  class="text-uppercase card-text text-info"
+                ></p>
+              </div>
+
+              <div class="row h-50 d-inline-block" id="description-icon">
+                <img
+                  src="img/cloud.png"
+                  class="rounded float-right img-fluid max-widht:10px;"
+                />
+              </div>
+            </div>
           </div>
-          <div class="col border">
-              <div id="min" class="text-info h6"></div>
-              <div id="max" class="text-info h6"></div>
+          <div class="row card-body" id="lower-app-wrapper">
+            <div class="border border-info rounded p-3 m-1">
+              <p>
+                Mon
+              </p>
+              <br />
+              <i class="fas fa-cloud"></i>
+              <br />
+              <p>
+                12ºC/27ºC
+              </p>
+            </div>
+
+            <div class="border border-info rounded p-3 m-1">
+              <p>
+                Tue
+              </p>
+              <br />
+              <i class="fas fa-cloud"></i>
+              <br />
+              <p>
+                12ºC/27ºC
+              </p>
+            </div>
+
+            <div class="border border-info rounded p-3 m-1">
+              <p>
+                Wed
+              </p>
+              <br />
+              <i class="fas fa-cloud"></i>
+              <br />
+              <p>
+                12ºC/27ºC
+              </p>
+            </div>
+
+            <div class="border border-info rounded p-3 m-1">
+              <p>
+                Thu
+              </p>
+              <br />
+              <i class="fas fa-cloud"></i>
+              <br />
+              <p>
+                12ºC/27ºC
+              </p>
+            </div>
+
+            <div class="border border-info rounded p-3 m-1">
+              <p>
+                Fri
+              </p>
+              <br />
+              <i class="fas fa-cloud"></i>
+              <br />
+              <p>
+                12ºC/27ºC
+              </p>
+            </div>
           </div>
         </div>
-        
-      </div>
-      <div class="col-sm-4 card-body ">
-        <div class="row align-items-center">
-          <div class="col">
-            <p id="description" class="text-uppercase card-text text-info"></p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <img src="img/cloud.png" class="rounded float-right img-fluid max-width:100%;" />
-          </div>
-        </div>
+
+        <small class="m-3">
+          This app was coded by
+          <a href="https://github.com/gabidaquino" target="_blank">
+            Gabi D'Aquino
+          </a>
+          and is
+          <a
+            href="https://github.com/gabidaquino/GabrielaPD_weather"
+            target="_blank"
+          >
+            open-sourced on GitHub
+          </a>
+          and
+          <a href="https://www.netlify.com/" target="_blank">
+            hosted on Netlify</a
+          >.
+        </small>
       </div>
     </div>
-
-    <div class="row lower-app card-body border">
-      <div class="border border-info rounded p-3 m-1">
-        <p>
-          Mon
-        </p>
-        <br />
-        <i class="fas fa-cloud"></i>
-        <br />
-        <p>
-          12ºC/27ºC
-        </p>
-      </div>
-      <div class="border border-info rounded p-3 m-1">
-        <p>
-          Tue
-        </p>
-        <br />
-        <i class="fas fa-cloud"></i>
-        <br />
-        <p>
-          12ºC/27ºC
-        </p>
-      </div>
-      <div class=" border border-info rounded p-3 m-1">
-        <p>
-          Wed
-        </p>
-        <br />
-        <i class="fas fa-cloud"></i>
-        <br />
-        <p>
-          12ºC/27ºC
-        </p>
-      </div>
-      <div class=" border border-info rounded p-3 m-1">
-        <p>
-          Thu
-        </p>
-        <br />
-        <i class="fas fa-cloud"></i>
-        <br />
-        <p>
-          12ºC/27ºC
-        </p>
-      </div>
-      <div class=" border border-info rounded p-3 m-1">
-        <p>
-          Fri
-        </p>
-        <br />
-        <i class="fas fa-cloud"></i>
-        <br />
-        <p>
-          12ºC/27ºC
-        </p>
-      </div>
-      <small>
-        This app was coded by <a href="https://github.com/gabidaquino" target="_blank"> Gabi D'Aquino </a> and is <a href="https://github.com/gabidaquino/GabrielaPD_weather" target="_blank" > open-sourced on GitHub </a> and <a href="https://www.netlify.com/" target="_blank"> hosted on Netlify </a> .
-      </small>
-      
-    </div>
-  </div>
-<script src="src/script.js"></script>
-</body>
-
+    <script src="src/script.js"></script>
+  </body>
 </html>

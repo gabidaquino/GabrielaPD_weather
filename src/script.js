@@ -10,7 +10,7 @@ function displayWeather(response) {
   )} ºC`;
   document.querySelector("#max").innerHTML = `max ${Math.round(
     response.data.main.temp_max
-  )}ºC`;
+  )} ºC`;
   document.querySelector("#country-display").innerHTML =
     response.data.sys.country;
   console.log(response.data.name);
