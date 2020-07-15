@@ -14,6 +14,9 @@ function displayWeather(response) {
   document.querySelector("#country-display").innerHTML =
     response.data.sys.country;
   console.log(response.data.name);
+  document.querySelector("#date-line").innerHTML = showDate(
+    response.data.dt * 1000
+  );
 }
 function searchCity(city) {
   let apiKey = "f40c452c872335dff1152a721c30a322";
@@ -40,8 +43,9 @@ function getCurrtenLocation(event) {
 let searchForm = document.querySelector("#city-form");
 searchForm.addEventListener("submit", handleSearch);
 //show date
-function showDate() {
-  let today = new Date();
+
+function showDate(timestamp) {
+  let today = new Date(timestamp);
   let weekdays = [
     "Sunday",
     "Monday",
@@ -76,8 +80,7 @@ function showDate() {
   } else {
     minutes = minutes + "";
   }
-  let dateNow = document.querySelector("#date-line");
-  dateNow.innerHTML = `${weekday}, ${monthday} ${month} ${year} | ${hour}:${minutes}`;
+  return `${weekday}, ${monthday} ${month} ${year} | ${hour}:${minutes}`;
 }
 showDate();
 
