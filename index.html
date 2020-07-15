@@ -62,7 +62,7 @@
             <div class="col-8" id="coluna-esquerda-wrapper">
               <div class="row" id="linha-da-cidade">
                 <span class="text-info h3" id="city-display"></span>
-                <span class="text-info h3">,</span>
+                <span class="text-info h3">, </span>
                 <span
                   class="text-uppercase text-info h3"
                   id="country-display"
@@ -75,13 +75,12 @@
 
               <div class="row" id="linha-das-temperaturas">
                 <div class="col-6" id="coluna-temperatura-atual">
-                  <div class="h5 units" id="tracinho">
-                    <span
-                      class="text-info temperature display-3"
-                      id="temperature"
-                    ></span>
-                    <a href="#" id="celsius-link">ºC</a> |
-                    <a href="#" id="fahrenheit-link">F</a>
+                  <div class="weather-temperature">
+                    <span class="value" id="temperature"></span>
+                    <span class="units">
+                      <a href="#" id="celsius-link">ºC</a> |
+                      <a href="#" id="fahrenheit-link">F</a>
+                    </span>
                   </div>
                 </div>
                 <div class="col-6 card-body" id="coluna-minima-maxima">
@@ -91,10 +90,7 @@
               </div>
             </div>
 
-            <div
-              class="col-sm-4 border border-info card-body"
-              id="coluna-direita-wrapper"
-            >
+            <div class="col-sm-4 card-body" id="coluna-direita-wrapper">
               <div class="row">
                 <p
                   id="description"
@@ -102,11 +98,11 @@
                 ></p>
               </div>
 
-              <div class="row h-50 d-inline-block" id="description-icon">
-                <img
-                  src="img/cloud.png"
-                  class="rounded float-right img-fluid max-widht:10px;"
-                />
+              <div
+                class="row h-50 d-inline-block weather-temperature"
+                id="description-icon"
+              >
+                <img src="img/cloud.png" class="#" />
               </div>
             </div>
           </div>

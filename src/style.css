@@ -15,4 +15,22 @@ ul {
   padding: 20px;
   border: 1px solid;
   border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.weather-temperature .value {
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.weather-temperature .units {
+  position: relative;
+  font-size: 16px;
+  top: -34px;
+}
+
+.weather-temperature img {
+  height: 100px;
+  width: 100px;
 }
