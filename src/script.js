@@ -13,10 +13,15 @@ function displayWeather(response) {
   )} ºC`;
   document.querySelector("#country-display").innerHTML =
     response.data.sys.country;
-  console.log(response.data.name);
   document.querySelector("#date-line").innerHTML = showDate(
     response.data.dt * 1000
   );
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
 }
 function searchCity(city) {
   let apiKey = "f40c452c872335dff1152a721c30a322";
